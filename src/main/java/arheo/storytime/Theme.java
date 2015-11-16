@@ -36,6 +36,6 @@ public enum Theme {
 	}
 	
 	public String getTitle() {
-		return this.titles[rand.nextInt(this.titles.length)];
+		return Comp.TITLETYPE.get();
 	}
 }
