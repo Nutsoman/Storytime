@@ -40,6 +40,9 @@ public enum Comp {
 	
 	;
 	
+	public static final String delimiter = "#";
+	public static final String seperator = ".";
+	
 	public final String[] words;
 	private static Random rand = new Random();
 	
