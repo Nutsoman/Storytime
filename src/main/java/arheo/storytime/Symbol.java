@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-
 import static arheo.storytime.PhraseList.Phrase.*;
 
 public enum Symbol {
@@ -4127,7 +4127,67 @@ public enum Symbol {
 			while(iter.hasNext()) {
 				Item item = iter.next();
 				
-				item.getSubItems(item, null, items);
+				if (!(item instanceof ItemBlock)){
+					item.getSubItems(item, null, items);
+				}
+			}
+			
+			items:
+			for (ItemStack stack : items) {
+				String name = stack.getDisplayName().toLowerCase();
+				for (String ban : banned) {
+					if (name.contains(ban)) {
+						continue items;
+					}
+				}
+				this.cache.add(stack);
+			}
+		}
+	},
+	
+	MC_BLOCK(null){
+		private boolean cached = false;
+		private List<ItemStack> cache;
+		private String[] banned = new String[] {
+			"facade:",
+			"slab",
+			"panel",
+			"cover",
+			"post",
+			"corner",
+			"nook",
+			"spawn",
+			"(",
+			")",
+			"[",
+			"]",
+			"<",
+			">",
+		};
+		
+		@Override
+		public String get() {
+			if (!cached) { cache(); }
+			if (this.cache.size() == 0) {
+				return "[NO BLOCK]";
+			}
+			String item = cache.get(rand.nextInt(cache.size())).getDisplayName();
+			return item;
+		}
+		
+		@SuppressWarnings("unchecked")
+		private void cache() {
+			this.cache = new ArrayList<ItemStack>();
+			
+			Iterator<Item> iter = Item.itemRegistry.iterator();
+			
+			List<ItemStack> items = new ArrayList<ItemStack>();
+			while(iter.hasNext()) {
+				Item item = iter.next();
+				
+				if ((item instanceof ItemBlock)){
+					item.getSubItems(item, null, items);
+				}
 			}
 			
 			items:
