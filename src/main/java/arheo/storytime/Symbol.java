@@ -510,7 +510,7 @@ public enum Symbol {
 			"Paul",
 			"Paulus",
 			"Innocentius",
-			"Jesus",
+			w("Jesus",0.1),
 			"Fernando",
 			"Mario",
 			"Luigi",
