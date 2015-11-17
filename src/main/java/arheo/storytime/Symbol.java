@@ -13,8 +13,8 @@ import static arheo.storytime.PhraseList.Phrase.*;
 public enum Symbol {
 
 	NAMETYPE(new PhraseList(
-			"#NAMES_MALE_FIRST# #NAMES_LAST#",
-			"#NAMES_FEMALE_FIRST# #NAMES_LAST#",
+			w("#NAMES_MALE_FIRST# #NAMES_LAST#", 4.0),
+			w("#NAMES_FEMALE_FIRST# #NAMES_LAST#", 4.0),
 			"#TITLE_MALE# #NAMES_MALE_FIRST#",
 			"#TITLE_FEMALE# #NAMES_FEMALE_FIRST#",
 			"#TITLE_MALE# #NAMES_LAST#",
@@ -23,28 +23,21 @@ public enum Symbol {
 			"#TITLE_FEMALE# #NAMES_FEMALE_FIRST# #NAMES_LAST#",
 			"#TITLE_MALE# #NAMES_LAST# #LAST_TITLE#",
 			"#TITLE_FEMALE# #NAMES_LAST# #LAST_TITLE#",
-			"#TITLE_MALE# #NAMES_LAST# the #ADJ#",
-			"#TITLE_FEMALE# #NAMES_LAST# the #ADJ#",
-			"#NAMES_MALE_FIRST# #NAMES_LAST# the #ADJ# #ANIMAL_SING#",
-			"#NAMES_FEMALE_FIRST# #NAMES_LAST# the #ADJ# #ANIMAL_SING#",
-			"#TITLE_MALE# #NAMES_LAST# the #ANIMAL_SING#",
-			"#TITLE_FEMALE# #NAMES_LAST# the #ANIMAL_SING#",
-			"#TITLE_MALE# #NAMES_LAST# the #ADV# #ADJ#",
-			"#TITLE_FEMALE# #NAMES_LAST# the #ADV# #ADJ#",
+			w("#TITLE_MALE# #NAMES_LAST# the #ADJ#", 0.5),
+			w("#TITLE_FEMALE# #NAMES_LAST# the #ADJ#", 0.5),
+			w("#NAMES_MALE_FIRST# #NAMES_LAST# the #ADJ# #ANIMAL_SING#", 0.4),
+			w("#NAMES_FEMALE_FIRST# #NAMES_LAST# the #ADJ# #ANIMAL_SING#", 0.4),
+			w("#TITLE_MALE# #NAMES_LAST# the #ANIMAL_SING#", 0.25),
+			w("#TITLE_FEMALE# #NAMES_LAST# the #ANIMAL_SING#", 0.25),
+			w("#TITLE_MALE# #NAMES_LAST# the #ADV# #ADJ#", 0.2),
+			w("#TITLE_FEMALE# #NAMES_LAST# the #ADV# #ADJ#", 0.2),
 			"#NAMES_MALE_FIRST#",
 			"#NAMES_FEMALE_FIRST#",
 			"#ANIMAL_SING# #NAMES_MALE_FIRST#"
-			
-			
-			
-			
-			
-			
-	
 	)),
 	
 	TITLETYPE(new PhraseList(
-			/*"#TITLE_MALE# of the #ANIMAL_PLURAL#",
+			"#TITLE_MALE# of the #ANIMAL_PLURAL#",
 			"#ADV# #ADJ#",
 			"#ADJ# Tales",
 			"#BOOKTYPE# the #ANIMAL_PLURAL# and #TITLE_MALE# #NAMES_MALE_FIRST#",
@@ -103,7 +96,7 @@ public enum Symbol {
 			"#THE# #VERB_PRES# at #NOUNS_BASIC##PLACE_2#",
 			"#BOOKTYPE# #PLACE_1##PLACE_2#",
 			"#BOOKTYPE# #FOOD_BASIC##PLACE_2#",
-			"#THE# #VERB_PRES# at #FOOD_PRODUCT##PLACE_2#",*/
+			"#THE# #VERB_PRES# at #FOOD_PRODUCT##PLACE_2#",
 			"#NAMES_FIRST# and the #ADJ# #MC_ITEM#"
 			
 	)),
@@ -121,10 +114,6 @@ public enum Symbol {
 			"The Collected Tales of",
 			"An Anthology of",
 			"The Almanack of"
-			
-			
-
-			
 	)),
 	
 	
