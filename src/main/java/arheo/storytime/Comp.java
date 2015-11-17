@@ -36,7 +36,7 @@ public enum Comp {
 	}),
 	
 	TITLETYPE(new String[]{
-			"#TITLE_MALE# of the #ANIMAL_PLURAL#",
+			/*"#TITLE_MALE# of the #ANIMAL_PLURAL#",
 			"#ADV# #ADJ#",
 			"#ADJ# Tales",
 			"#BOOKTYPE# the #ANIMAL_PLURAL# and #TITLE_MALE# #NAMES_MALE_FIRST#",
@@ -62,14 +62,15 @@ public enum Comp {
 			"#BOOKSTART_2# #VERB_PRES# #NOUNS_BASIC_PLURAL#",
 			"#BOOKSTART_2# #ANIMAL_SING# #VERB_PRES#",
 			"#TITLE_FEMALE# #NAMES_FEMALE_FIRST# on #VERB_PRES# #NOUNS_BASIC_PLURAL#",
-			"#NAMES_MALE_FIRST# on #VERB_PRES#",
+			"#NAMES_MALE_FIRST#, on #VERB_PRES#",
 			"#BOOKSTART_1# #VERB_PRES# #NOUNS_BASIC_PLURAL#",
 			"#VERB_PRES# #FOOD_PRIMARY#",
 			"#BOOKTYPE# #NAMES_MALE_FIRST# the #VERB_PAST#",
 			"#VERB_PRES# things #ADV#",
-			"#PRONOUN# #VERB_PAST# #PRONOUN_OBJ# #ADV#",
+			"#PRONOUN# #VERB_PAST# #PRONOUN_OBJ#",
 			"#VERB_PRES# #NAMES_FEMALE_FIRST#",
-			"#VERB_PRES# #TITLE_MALE# #NAMES_MALE_FIRST#",
+			"#VERB_PRES# #TITLE_MALE# #NAMES_MALE_FIRST#",*/
+			"#ADJ# #NOUNS_BASIC#, #ADJ# #NOUNS_BASIC#",
 		
 			
 			//Recipe Books
@@ -78,6 +79,24 @@ public enum Comp {
 			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY# #FOOD_BASIC# #FOOD_PRODUCT#",
 			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY# #ANIMAL_SING# #FOOD_PRODUCT#",
 			"#RECIPE_BOOKTYPE# #FOOD_BASIC# and #ANIMAL_SING# #FOOD_PRODUCT#",
+			
+			//Newspapers NEWS_TITLE_1 NEWS_TITLE_2 THE PLACE_1 PLACE_2
+			
+			"#THE# #NEWS_TITLE_1# #NEWS_TITLE_2#",
+			"#THE# #PLACE_1##PLACE_2# #NEWS_TITLE_2#",
+			"#THE# #ANIMAL_SING##PLACE_2# #NEWS_TITLE_2#",
+			"#THE# #PLACE_1##PLACE_2# #ANIMAL_SING#",
+			"#THE# #PLACE_1##PLACE_2# #NEWS_TITLE_2#",
+			
+			//Hybrid
+			
+			"#THE# #VERB_PRES# at #PLACE_1##PLACE_2#",
+			"#THE# #VERB_PRES# at #ANIMAL_SING##PLACE_2#",
+			"#THE# #VERB_PRES# at #NOUNS_BASIC##PLACE_2#",
+			"#BOOKTYPE# #PLACE_1##PLACE_2#",
+			"#BOOKTYPE# #FOOD_BASIC##PLACE_2#",
+			"#THE# #VERB_PRES# at #FOOD_PRODUCT##PLACE_2#",
+			
 	}),
 	
 	BOOKTYPE(new String[]{
@@ -3521,7 +3540,6 @@ public enum Comp {
 			"less",
 			"lightly",
 			"limply",
-			"lively",
 			"loftily",
 			"longingly",
 			"loosely",
@@ -3713,7 +3731,6 @@ public enum Comp {
 			"salmon",
 			"trout",
 			"leg",
-			"your hands",
 			"coffee",
 			"beer",
 			"cheese",
@@ -3783,6 +3800,7 @@ public enum Comp {
 			"peanut butter",
 			"butter",
 			"margerine",
+			"coconut",
 
 			
 			
@@ -3898,6 +3916,7 @@ public enum Comp {
 			"mess",
 			"mousse",
 			"crumble",
+			"macaroons",
 	
 	
 	}),
@@ -3914,6 +3933,147 @@ public enum Comp {
 			"Catering 101 :",
 			
 	}),
+	
+	
+	PLACE_1(new String[]{
+			"South",
+			"North",
+			"East",
+			"West",
+			"Cave",
+			"Spike",
+			"Pork",
+			"Beef",
+			"Aver",
+			"Toad",
+			"Left",
+			"Right",
+			"Best",
+			"Leaf",
+			"Tumble",
+			"Sugar",
+			"Toast",
+			"Glory",
+			"Blood",
+			"Fish",
+			"Cold",
+			"Old",
+			"Tun",
+			"Bum",
+			"Ast",
+			"New",
+			"Blue",
+			
+			
+	}),
+	
+	PLACE_2(new String []{
+			"well",
+			"hills",
+			"borough",
+			"ham",
+			"bury",
+			"leford",
+			"ridge",
+			"lebury",
+			"town",
+			"ville",
+			"wells",
+			"lico",
+			"ford",
+			"bridge",
+			"-Eaton",
+			"stein",
+			"castle",
+			
+	}),
+	
+	THE(new String[]{
+			"The",
+	}),
+	
+	NEWS_TITLE_1(new String[]{
+			"Daily",
+			"Bi-Annual",
+			"Global",
+			"Local",
+			"Irrelevant",
+			"Important",
+			"Highly Exciting",
+			"Weekly",
+			"Crafter's",
+			"Miner's",
+			"Builder's",
+			"Glorious",
+			"Annual",
+			"Evening",
+			"Nightly",
+			"Morning",
+			"Outrageous",
+			"Irregular",
+			"Regular",
+			"Local",
+			"Afternoon",
+			"Mid-Morning",
+			"Three o' Clock",
+			"Ten Past Four",
+			"Uplifting",
+			"Enthusiast's",
+			
+	
+			
+	}),
+	
+	NEWS_TITLE_2(new String[]{
+			"Star",
+			"Gazette",
+			"Moon",
+			"Tribune",
+			"Archon",
+			"Paper",
+			"Broadsheet",
+			"Tabloid",
+			"Update",
+			"Pack of Lies",
+			"Times",
+			"Telegraph",
+			"Journal",
+			"News",
+			"Post",
+			"Chronicle",
+			"Inquirer",
+			"Constitution",
+			"Republic",
+			"Advertiser",
+			"Standard",
+			"Patriot",
+			"Courier",
+			"Sentinel",
+			"Eagle",
+			"Republican",
+			"Independant",
+			"Observer",
+			"Guardian",
+			"Mail",
+			"Metro",
+			"Herald",
+			"Express",
+			"Mercury",
+			"Echo",
+			"Recorder",
+			"Champion",
+			"Hermes",
+			"Pluto",
+			"Broadcast",
+			"Telescope",
+			"Interstellar Communique",
+			"Almanac",
+	
+	
+	
+	}),
+	
+	
 	
 	;
 	
