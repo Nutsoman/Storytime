@@ -3,8 +3,10 @@ package arheo.storytime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import arheo.storytime.PhraseList.Phrase;
+
 public class TextUtils {
-	private static final Pattern pattern = Pattern.compile("#([\\w\\.]*)#");
+	private static final Pattern pattern = Pattern.compile("#(.*?)#");
 	
 	public static String stringtrans(String text, Story story) {
 		Matcher matcher = pattern.matcher(text);
@@ -21,25 +23,31 @@ public class TextUtils {
 				int end = matcher.end();
 				
 				String raw = text.substring(start,end-1);
-				String[] words = raw.split(Symbol.delimiter);
+				String[] words = raw.split(Symbol.seperator);
 				String word = words[0];
-				String replacement = "["+word+"]";
+				Phrase replacement = new Phrase("["+word+"]");
+				Boolean format = true;
 				
-				if (words.length > 1) {
-					
-				} else {
-					try {
-						Symbol comp = Symbol.valueOf(word);
-						replacement = comp.get();
-					} catch (Exception e) {
-						replacement = "[MISSING]";
-						Storytime.logger.warn(e);
+				try {
+					Symbol comp = Symbol.valueOf(word);
+					replacement = comp.getPhrase();
+				} catch (IllegalArgumentException e) {
+					format = false;
+					replacement = Phrase.MISSING;
+				} catch (Exception e) {
+					format = false;
+					replacement = Phrase.ERROR;
+					Storytime.logger.warn(e,e);
+				}
+				
+				if (words.length > 1 && format) {
+					for (int i=1; i<words.length; i++) {
+						replacement = Formatting.format(replacement, words[i]);
 					}
 				}
 				
-				
 				replaced.append(text.substring(lastend,start-1));
-				replaced.append(replacement);
+				replaced.append(replacement.text);
 				lastend = end;
 			} 
 			

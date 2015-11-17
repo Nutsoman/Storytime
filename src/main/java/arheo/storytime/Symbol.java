@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import arheo.storytime.PhraseList.Phrase;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -4283,13 +4285,13 @@ public enum Symbol {
 		};
 		
 		@Override
-		public String get() {
+		public Phrase getPhrase() {
 			if (!cached) { cache(); }
 			if (this.cache.size() == 0) {
-				return "[NO ITEM]";
+				return new Phrase("[NO ITEM]");
 			}
 			String item = cache.get(rand.nextInt(cache.size())).getDisplayName();
-			return item;
+			return w(item,1.0);
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -4341,13 +4343,13 @@ public enum Symbol {
 		};
 		
 		@Override
-		public String get() {
+		public Phrase getPhrase() {
 			if (!cached) { cache(); }
 			if (this.cache.size() == 0) {
-				return "[NO BLOCK]";
+				return new Phrase("[NO BLOCK]");
 			}
 			String item = cache.get(rand.nextInt(cache.size())).getDisplayName();
-			return item;
+			return w(item,1.0);
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -4381,7 +4383,7 @@ public enum Symbol {
 	;
 	
 	public static final String delimiter = "#";
-	public static final String seperator = "+";
+	public static final String seperator = "\\+";
 	
 	public final PhraseList words;
 	private static Random rand = new Random();
@@ -4391,6 +4393,12 @@ public enum Symbol {
 	}
 	
 	public String get(){
-		return this.words.get(rand);
+		return this.getPhrase().text;
+	}
+	
+	public Phrase getPhrase() {
+		Phrase p = this.words.get(rand);
+		return p.copy();
 	}
 }
+

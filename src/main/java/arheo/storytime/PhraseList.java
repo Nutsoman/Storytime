@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import arheo.storytime.Formatting.IFormatType;
+
 public class PhraseList {
 	private List<Phrase> list;
 	private double totalWeight = 0;
@@ -44,13 +46,13 @@ public class PhraseList {
 		this.recalcWeights = true;
 	}
 	
-	public String get(Random rand) {
+	public Phrase get(Random rand) {
 		if (this.recalcWeights) {
 			this.calculateWeights();
 		}
 		
 		if (this.list.size() == 0) {
-			return "[EMPTY]";
+			return Phrase.MISSING;
 		}
 		
 		Phrase out = this.list.get(0);
@@ -62,7 +64,7 @@ public class PhraseList {
 			out = p;
 		}
 		
-		return out.text;
+		return out;
 	}
 	
 	public static class Phrase {
@@ -70,13 +72,27 @@ public class PhraseList {
 		public double weight;
 		protected double totalWeight = 0;
 		
+		public static final Phrase MISSING = new Phrase("[MISSING]", 1.0);
+		public static final Phrase ERROR = new Phrase("[ERROR]", 1.0);
+		
 		protected Phrase(String text, double weight) {
 			this.text = text;
 			this.weight = weight;
 		}
+		protected Phrase(String text) {
+			this(text,1.0);
+		}
 		
 		public static Phrase w(String text, double weight) {
 			return new Phrase(text, weight);
+		}
+		
+		public Phrase copy() {
+			return new Phrase(this.text, this.weight);
+		}
+		
+		public Phrase format(IFormatType formatting) {
+			return new Phrase(formatting.apply(this.text), this.weight);
 		}
 	}
 }
