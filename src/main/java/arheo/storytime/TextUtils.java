@@ -21,7 +21,7 @@ public class TextUtils {
 				int end = matcher.end();
 				
 				String raw = text.substring(start,end-1);
-				String[] words = raw.split(Comp.delimiter);
+				String[] words = raw.split(Symbol.delimiter);
 				String word = words[0];
 				String replacement = "["+word+"]";
 				
@@ -29,10 +29,11 @@ public class TextUtils {
 					
 				} else {
 					try {
-						Comp comp = Comp.valueOf(word);
+						Symbol comp = Symbol.valueOf(word);
 						replacement = comp.get();
 					} catch (Exception e) {
 						replacement = "[MISSING]";
+						Storytime.logger.warn(e);
 					}
 				}
 				

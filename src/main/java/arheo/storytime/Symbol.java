@@ -1,10 +1,18 @@
 package arheo.storytime;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
-public enum Comp {
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
-	NAMETYPE(new String[]{
+import static arheo.storytime.PhraseList.Phrase.*;
+
+public enum Symbol {
+
+	NAMETYPE(new PhraseList(
 			"#NAMES_MALE_FIRST# #NAMES_LAST#",
 			"#NAMES_FEMALE_FIRST# #NAMES_LAST#",
 			"#TITLE_MALE# #NAMES_MALE_FIRST#",
@@ -25,7 +33,7 @@ public enum Comp {
 			"#TITLE_FEMALE# #NAMES_LAST# the #ADV# #ADJ#",
 			"#NAMES_MALE_FIRST#",
 			"#NAMES_FEMALE_FIRST#",
-			"#ANIMAL_SING# #NAMES_MALE_FIRST#",
+			"#ANIMAL_SING# #NAMES_MALE_FIRST#"
 			
 			
 			
@@ -33,9 +41,9 @@ public enum Comp {
 			
 			
 	
-	}),
+	)),
 	
-	TITLETYPE(new String[]{
+	TITLETYPE(new PhraseList(
 			/*"#TITLE_MALE# of the #ANIMAL_PLURAL#",
 			"#ADV# #ADJ#",
 			"#ADJ# Tales",
@@ -69,7 +77,7 @@ public enum Comp {
 			"#VERB_PRES# things #ADV#",
 			"#PRONOUN# #VERB_PAST# #PRONOUN_OBJ#",
 			"#VERB_PRES# #NAMES_FEMALE_FIRST#",
-			"#VERB_PRES# #TITLE_MALE# #NAMES_MALE_FIRST#",*/
+			"#VERB_PRES# #TITLE_MALE# #NAMES_MALE_FIRST#",
 			"#ADJ# #NOUNS_BASIC#, #ADJ# #NOUNS_BASIC#",
 		
 			
@@ -95,11 +103,12 @@ public enum Comp {
 			"#THE# #VERB_PRES# at #NOUNS_BASIC##PLACE_2#",
 			"#BOOKTYPE# #PLACE_1##PLACE_2#",
 			"#BOOKTYPE# #FOOD_BASIC##PLACE_2#",
-			"#THE# #VERB_PRES# at #FOOD_PRODUCT##PLACE_2#",
+			"#THE# #VERB_PRES# at #FOOD_PRODUCT##PLACE_2#",*/
+			"#NAMES_FIRST# and the #ADJ# #MC_ITEM#"
 			
-	}),
+	)),
 	
-	BOOKTYPE(new String[]{
+	BOOKTYPE(new PhraseList(
 			"The Tome of",
 			"A Treatise on",
 			"An Essay on",
@@ -111,37 +120,37 @@ public enum Comp {
 			"An Exploration of",
 			"The Collected Tales of",
 			"An Anthology of",
-			"The Almanack of",
+			"The Almanack of"
 			
 			
 
 			
-	}),
+	)),
 	
 	
-	PRONOUN(new String[]{
+	PRONOUN(new PhraseList(
 			"I",
 			"you",
 			"he",
 			"she",
 			"it",
 			"we",
-			"they",
+			"they"
 			
-	}),
+	)),
 	
-	PRONOUN_OBJ(new String[]{
+	PRONOUN_OBJ(new PhraseList(
 			"me",
 			"him",
 			"her",
 			"them",
 			"it",
-			"us",
+			"us"
 			
 			
-	}),
+	)),
 	
-	BOOKSTART_1(new String[]{
+	BOOKSTART_1(new PhraseList(
 			"Why I love",
 			"My thoughts on",
 			"Man, I just love",
@@ -151,39 +160,39 @@ public enum Comp {
 			"He bought me",
 			"She bought me",
 			"There were only...",
-			"#ADJ#",
+			"#ADJ#"
 			
 			
 			
-	}),
+	)),
 	
-	BOOKSTART_2(new String[]{
+	BOOKSTART_2(new PhraseList(
 			"A Manual on",
-			"Introducing",
-	}),
+			"Introducing"
+	)),
 	
-	BOOKTYPE_END(new String[]{
+	BOOKTYPE_END(new PhraseList(
 			"- Collected Tales",
 			"- a Magazine for Collectors",
-			"- the Tales Thereof",
+			"- the Tales Thereof"
 			
 			
-	}),
+	)),
 	
 	
-	EXCLAMATION(new String[]{
+	EXCLAMATION(new PhraseList(
 			"Drat",
 			"Bother",
 			"Fiddlesticks",
 			"Damnation",
 			"Alas",
 			"Alack",
-			"Greeeeeeeeeg!?",
+			"Greeeeeeeeeg!?"
 			
 			
-	}),
+	)),
 	
-	NOUNS_BASIC(new String[]{
+	NOUNS_BASIC(new PhraseList(
 			"alumnus",
 			"cactus",
 			"focus",
@@ -294,13 +303,13 @@ public enum Comp {
 			"air",
 			"teacher",
 			"force",
-			"education",
+			"education"
 	
 			
 			
-	}),
+	)),
 	
-	NOUNS_BASIC_PLURAL(new String[]{
+	NOUNS_BASIC_PLURAL(new PhraseList(
 			"alumni",
 			"cacti",
 			"foci",
@@ -408,12 +417,12 @@ public enum Comp {
 			"air",
 			"teachers",
 			"forces",
-			"education",
+			"education"
 			
 			
-	}),
+	)),
 	
-	NAMES_MALE_FIRST(new String[]{
+	NAMES_MALE_FIRST(new PhraseList(
 			"Slowpoke",
 			"Runewolf",
 			"Direwolf",
@@ -505,10 +514,10 @@ public enum Comp {
 			"Fernando",
 			"Mario",
 			"Luigi",
-			"Pimlico",
-	}),
+			"Pimlico"
+	)),
 	
-	NAMES_FEMALE_FIRST(new String[]{
+	NAMES_FEMALE_FIRST(new PhraseList(
 			"Morvelaira",
 			"Rorax",
 			"Kleetho",
@@ -594,11 +603,16 @@ public enum Comp {
 			"April",
 			"June",
 			"October",
-			"Beef",
+			"Beef"
 			
-	}),
+	)),
 	
-	NAMES_LAST(new String[]{
+	NAMES_FIRST(new PhraseList(
+			"#NAMES_MALE_FIRST#",
+			"#NAMES_FEMALE_FIRST#"
+	)),
+	
+	NAMES_LAST(new PhraseList(
 			"Billo",
 			"Davo",
 			"Haricot Verts",
@@ -700,11 +714,11 @@ public enum Comp {
 			"Stew",
 			"Crimsoneyes",
 			"Nostrum",
-			"Balls",
+			"Balls"
 	
-	}),
+	)),
 	
-	VERB(new String[]{
+	VERB(new PhraseList(
 			"accept",
 			"add",
 			"admire",
@@ -1336,13 +1350,13 @@ public enum Comp {
 			"yawn",
 			"yell",
 			"zip",
-			"zoom",
+			"zoom"
 	
 	
 	
-	}),
+	)),
 	
-	VERB_PAST(new String[]{
+	VERB_PAST(new PhraseList(
 			"accepted",
 			"added",
 			"admired",
@@ -1974,12 +1988,12 @@ public enum Comp {
 			"yawned",
 			"yelled",
 			"zipped",
-			"zoomed",
+			"zoomed"
 			
 			
-	}),
+	)),
 	
-	VERB_PRES(new String[]{
+	VERB_PRES(new PhraseList(
 			"accepting",
 			"adding",
 			"admiring",
@@ -2611,14 +2625,14 @@ public enum Comp {
 			"yawning",
 			"yelling",
 			"zipping",
-			"zooming",
+			"zooming"
 			
 			
-	}),
+	)),
 	
 	
 	
-	TITLE_MALE(new String[]{
+	TITLE_MALE(new PhraseList(
 			"Doctor",
 			"Surgeon",
 			"Baron",
@@ -2710,11 +2724,11 @@ public enum Comp {
 			"Uncle",
 			"Grandfather",
 			"Grandad",
-			"Great-Uncle",
+			"Great-Uncle"
 			
-	}),
+	)),
 	
-	TITLE_FEMALE(new String[]{
+	TITLE_FEMALE(new PhraseList(
 			"Baroness",
 			"Duchess",
 			"Lady",
@@ -2794,11 +2808,11 @@ public enum Comp {
 			"Auntie",
 			"Aunt",
 			"Grandma",
-			"Great-Grandma",
+			"Great-Grandma"
 			
-	}),
+	)),
 	
-	LAST_TITLE(new String[]{
+	LAST_TITLE(new PhraseList(
 			"the Unpleasant",
 			"the Pleasant",
 			"the Hard",
@@ -2830,11 +2844,11 @@ public enum Comp {
 			"the Penguin",
 			"- Player of Games",
 			"- Player of Cards",
-			"- Player of Monopoly",
-	}),
+			"- Player of Monopoly"
+	)),
 	
 	
-	ADJ(new String[]{
+	ADJ(new PhraseList(
 			"good",
 			"new",
 			"first",
@@ -3150,11 +3164,11 @@ public enum Comp {
 			"truculent",
 			"true",
 			"truthful",
-			"typical",
+			"typical"
 
-	}),
+	)),
 	
-	ANIMAL_PLURAL(new String[]{
+	ANIMAL_PLURAL(new PhraseList(
 			
 
 			"raptors",
@@ -3274,12 +3288,12 @@ public enum Comp {
 			"wolves",
 			"wombats",
 			"wrens",
-			"zebras",
+			"zebras"
 			
 			
-	}),
+	)),
 	
-	ANIMAL_SING(new String[]{
+	ANIMAL_SING(new PhraseList(
 
 			"alligator",
 			"antelope",
@@ -3398,12 +3412,12 @@ public enum Comp {
 			"wombat",
 			"wren",
 			"zebra",
-			"raptor",
+			"raptor"
 		
 			
-	}),
+	)),
 	
-		ADV(new String[]{
+		ADV(new PhraseList(
 			"absentmindedly",
 			"accidentally",
 			"acidly",
@@ -3706,15 +3720,15 @@ public enum Comp {
 			"youthfully",
 			"zealously",
 			"zestfully",
-			"zestily",
+			"zestily"
 
 	
 	
 	
 	
-	}),
+	)),
 	
-	FOOD_BASIC(new String[]{
+	FOOD_BASIC(new PhraseList(
 			"toast",
 			"bread",
 			"cake",
@@ -3800,13 +3814,13 @@ public enum Comp {
 			"peanut butter",
 			"butter",
 			"margerine",
-			"coconut",
+			"coconut"
 
 			
 			
-	}),
+	)),
 	
-	FOOD_PRIMARY(new String[]{
+	FOOD_PRIMARY(new PhraseList(
 			"crisp",
 			"baked",
 			"boiled",
@@ -3851,12 +3865,12 @@ public enum Comp {
 			"poached",
 			"pan-fried",
 			"marinaded",
-			"barbecued",
+			"barbecued"
 
 			
-	}),
+	)),
 	
-	FOOD_PRODUCT(new String[]{
+	FOOD_PRODUCT(new PhraseList(
 			"cake",
 			"buns",
 			"soup",
@@ -3916,12 +3930,12 @@ public enum Comp {
 			"mess",
 			"mousse",
 			"crumble",
-			"macaroons",
+			"macaroons"
 	
 	
-	}),
+	)),
 	
-	RECIPE_BOOKTYPE(new String[]{
+	RECIPE_BOOKTYPE(new PhraseList(
 			"How to cook",
 			"Making",
 			"Perfect",
@@ -3930,12 +3944,12 @@ public enum Comp {
 			"Mrs Beeton's",
 			"Producing",
 			"Mass Producing",
-			"Catering 101 :",
+			"Catering 101 :"
 			
-	}),
+	)),
 	
 	
-	PLACE_1(new String[]{
+	PLACE_1(new PhraseList(
 			"South",
 			"North",
 			"East",
@@ -3962,12 +3976,12 @@ public enum Comp {
 			"Bum",
 			"Ast",
 			"New",
-			"Blue",
+			"Blue"
 			
 			
-	}),
+	)),
 	
-	PLACE_2(new String []{
+	PLACE_2(new PhraseList(
 			"well",
 			"hills",
 			"borough",
@@ -3984,15 +3998,15 @@ public enum Comp {
 			"bridge",
 			"-Eaton",
 			"stein",
-			"castle",
+			"castle"
 			
-	}),
+	)),
 	
-	THE(new String[]{
-			"The",
-	}),
+	THE(new PhraseList(
+			"The"
+	)),
 	
-	NEWS_TITLE_1(new String[]{
+	NEWS_TITLE_1(new PhraseList(
 			"Daily",
 			"Bi-Annual",
 			"Global",
@@ -4018,13 +4032,13 @@ public enum Comp {
 			"Three o' Clock",
 			"Ten Past Four",
 			"Uplifting",
-			"Enthusiast's",
+			"Enthusiast's"
 			
 	
 			
-	}),
+	)),
 	
-	NEWS_TITLE_2(new String[]{
+	NEWS_TITLE_2(new PhraseList(
 			"Star",
 			"Gazette",
 			"Moon",
@@ -4067,28 +4081,81 @@ public enum Comp {
 			"Broadcast",
 			"Telescope",
 			"Interstellar Communique",
-			"Almanac",
+			"Almanac"
 	
 	
 	
-	}),
+	)),
 	
-	
+	MC_ITEM(null){
+		private boolean cached = false;
+		private List<ItemStack> cache;
+		private String[] banned = new String[] {
+			"facade:",
+			"slab",
+			"panel",
+			"cover",
+			"post",
+			"corner",
+			"nook",
+			"spawn",
+			"(",
+			")",
+			"[",
+			"]",
+			"<",
+			">",
+		};
+		
+		@Override
+		public String get() {
+			if (!cached) { cache(); }
+			if (this.cache.size() == 0) {
+				return "[NO ITEM]";
+			}
+			String item = cache.get(rand.nextInt(cache.size())).getDisplayName();
+			return item;
+		}
+		
+		@SuppressWarnings("unchecked")
+		private void cache() {
+			this.cache = new ArrayList<ItemStack>();
+			
+			Iterator<Item> iter = Item.itemRegistry.iterator();
+			
+			List<ItemStack> items = new ArrayList<ItemStack>();
+			while(iter.hasNext()) {
+				Item item = iter.next();
+				
+				item.getSubItems(item, null, items);
+			}
+			
+			items:
+			for (ItemStack stack : items) {
+				String name = stack.getDisplayName().toLowerCase();
+				for (String ban : banned) {
+					if (name.contains(ban)) {
+						continue items;
+					}
+				}
+				this.cache.add(stack);
+			}
+		}
+	},
 	
 	;
 	
 	public static final String delimiter = "#";
 	public static final String seperator = "+";
 	
-	public final String[] words;
+	public final PhraseList words;
 	private static Random rand = new Random();
 	
-	private Comp(String[] words) {
+	private Symbol(PhraseList words) {
 		this.words = words;
 	}
 	
 	public String get(){
-		return this.words[rand.nextInt(words.length)];
-		
+		return this.words.get(rand);
 	}
 }

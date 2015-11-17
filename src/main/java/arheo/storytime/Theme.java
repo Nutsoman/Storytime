@@ -32,10 +32,10 @@ public enum Theme {
 	
 	public String getAuthor() {
 		//return this.authors[rand.nextInt(this.authors.length)];
-		return Comp.NAMETYPE.get();
+		return Symbol.NAMETYPE.get();
 	}
 	
 	public String getTitle() {
-		return Comp.TITLETYPE.get();
+		return Symbol.TITLETYPE.get();
 	}
 }
