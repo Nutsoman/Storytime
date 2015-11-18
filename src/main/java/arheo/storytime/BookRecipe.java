@@ -40,7 +40,7 @@ public class BookRecipe implements IRecipe {
 		tag.setString("title",story.title);
 		tag.setInteger("generation", 0);
 		NBTTagList pages = new NBTTagList();
-		List<String> text = ubermethod();
+		List<String> text = ubermethod(story);
 		for (String pagetext:text) {
 			NBTTagString page = new NBTTagString(pagetext);
 			pages.appendTag(page);
@@ -64,9 +64,9 @@ public class BookRecipe implements IRecipe {
 		return null;
 	}
 
-	public List<String> ubermethod() {
+	public List<String> ubermethod(Story story) {
 		List<String> pages = new ArrayList<String>();
-		String dave = "Dave";
+		String dave = story.content;
 		pages.add(dave);
 		return pages;
 	}
