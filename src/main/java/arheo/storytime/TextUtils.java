@@ -11,7 +11,7 @@ public class TextUtils {
 	public static String stringtrans(String text, Story story) {
 		Matcher matcher = pattern.matcher(text);
 		int iter = 0;
-		while (matcher.lookingAt() && iter <= 100000) {
+		while (matcher.find() && iter <= 100000) {
 			iter++;
 			matcher = matcher.reset();
 			
@@ -58,7 +58,8 @@ public class TextUtils {
 			
 			
 			text = replaced.toString();
-			matcher = matcher.reset(text);
+			//matcher = matcher.reset(text);
+			matcher = pattern.matcher(text);
 		}
 		
 		return text;

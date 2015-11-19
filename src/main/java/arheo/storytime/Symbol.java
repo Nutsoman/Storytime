@@ -16,8 +16,293 @@ import static arheo.storytime.Phrases.*;
 public enum Symbol {
 
 	TESTPAGE(new PhraseList(
-			"#ADJ# #VERB_PAST# \n\n #PRONOUN# #VERB# #VERB_PRES#. \n #TITLE_MALE# #NAMES_MALE_FIRST# was left #ADJ#. Terror ensued."
+			"#SENT_A# #SENT_J#. #SENT_I#. #SENT_K#. More news #TIMES_FUTURE#."
 			
+			
+	)),
+	
+	SENT_A(new PhraseList(
+			"News emerges that",
+			"A story is circulating that",
+			"It appears that",
+			"It seems that",
+			"According to sources,",
+			"Apparently,",
+			"Shockingly,",
+			"Astoundingly,",
+			"Oddly,",
+			"Information has been brought to our attention that",
+			""
+			
+	)),
+	
+	SENT_B(new PhraseList(
+			"were discovered",
+			"were seen",
+			"have been seen",
+			"were noticed",
+			"were caught",
+			"have been caught",
+			"were arrested",
+			"have been arrested",
+			"were shot",
+			"were #ADV#",
+			"got in trouble after",
+			"required assistance after",
+			"called for help after",
+			"requested police aid after",
+			"shot at passers-by before",
+			"insulted #TITLES_MALE# #NAMES_MALE_FIRST# before",
+			"were brutally murdered after",
+			"#ADV# incinerated a #NOUNS_BASIC#, before",
+			"messed about with #NOUNS_BASIC_PLURAL#, before",
+			""
+	)),
+	
+	PEOPLE_PLURAL(new PhraseList(
+			"idiots",
+			"policemen",
+			"firemen",
+			"washerwomen",
+			"fishermen",
+			"mere-people",
+			"#ANIMAL_PLURAL#",
+			"peasants",
+			"aid-workers",
+			"foreign dignitaries",
+			"telephone salesmen",
+			"drunk party-goers",
+			"celibate monks",
+			"celibate nuns",
+			"people",
+			"#ANIMAL_SING# people",
+			"politicians",
+			"pilots",
+			"soldiers",
+			"pirates",
+			"fascists",
+			"communists",
+			"#NOUNS_BASIC# salesmen",
+			"tank-hunters",
+			"#NOUNS_BASIC_PLURAL#",
+			"#ANIMAL_SING#-handlers",
+			"musicians",
+			"pop-stars",
+			"singers",
+			"chimney-sweeps",
+			"scientists",
+			"hardcore gamers",
+			"sportsmen",
+			"sportswomen",
+			"lumberjacks",
+			""
+			
+			
+			
+	)),
+	
+	SENT_D(new PhraseList(
+			"Sadly,",
+			"Unfortunately,",
+			"Disappointingly,",
+			"Uncertain of the consequences,",
+			"Rather stupidly,",
+			"Amazingly,",
+			"Happily,",
+			"By order of the Law,",
+			"It was during these shenanigans that",
+			"In complete stupefaction, it has been suggested that",
+			"#THE# #TITLE_MALE# of the Law insisted that",
+			""
+			
+	)),
+	
+	OUTCOMES(new PhraseList(
+			"shot for treason",
+			"burnt at the stake",
+			"#VERB_PAST# without trial",
+			"#VERB_PAST# at great expense",
+			"#VERB_PAST# immediately",
+			"given a selection of #NOUNS_BASIC_PLURAL#",
+			"devoured by #ANIMAL_PLURAL#",
+			"laughed at by the populace",
+			"#VERB_PAST#",
+			"sacrificed to the Gods",
+			"heralded heroically",
+			"shunted sideways a few yards",
+			"dropped down a deep hole",
+			"thrown down the well",
+			"eaten",
+			"clobbered",
+			"tasted",
+			"incinerated",
+			"battered thoroughly",
+			"stroked gently",
+			"invited to lunch",
+			"invited to breakfast",
+			"invited round for tea",
+			"immolated",
+			"seasoned",
+			"shipped off-world",
+			"ridiculed",
+			"annihilated",
+			"decimated",
+			"hailed",
+			"applauded",
+			"rewarded",
+			"employed, full time",
+			"given back-massages",
+			""
+	)),
+	
+	CONT_ADVERB_CAPS(new PhraseList(
+			"However",
+			"But",
+			"Nevertheless",
+			"Nonetheless",
+			"Still",
+			"Yet",
+			"Although",
+			"Even so",
+			"For all that",
+			"Despite this",
+			"In spite of this",
+			""
+			
+			
+	)),
+	
+	TIMES_FUTURE(new PhraseList(
+			"later",
+			"tomorrow",
+			"next week",
+			"next year",
+			"in due course",
+			"when we can be bothered",
+			"at a later date",
+			"in time",
+			"in a few hours",
+			"in 31 minutes",
+			"forthwith",
+			"at lunchtime",
+			"at dinnertime",
+			"after entropy has destroyed the cosmos",
+			"in a tick",
+			"in several days",
+			", in a banana-boat",
+			""
+	)),
+	
+	TIMES_PAST(new PhraseList(
+			"last week",
+			"yesterday",
+			"previously",
+			"earlier",
+			"last month",
+			"last year",
+			"in the last few days",
+			"in the last few weeks",
+			"in the last few years",
+			"at a time before time",
+			""
+	
+			
+	)),
+			
+	THINGS(new PhraseList(
+			"#NOUNS_BASIC_PLURAL#",
+			"#PEOPLE_PLURAL#",
+			"#ANIMAL_PLURAL#",
+			""
+	)),
+	
+	SENT_I(new PhraseList(
+			"#CONT_ADVERB_CAPS# they were #VERB_PAST# by #THINGS#",
+			"#SENT_A# they #VERB_PAST# their way #WHERE#",
+			""
+			
+	)),
+	
+	SENT_J(new PhraseList(
+			"a group of #VERB_PRES# #PEOPLE_PLURAL# #SENT_B# #VERB_PRES#",
+			"a #ADJ# #ANIMAL_SING# was #OUTCOMES# by #THINGS# #TIMES_PAST#",
+			"#TITLE_MALE# #NAMES_MALE_FIRST# and #THEM# have been #OUTCOMES#",
+			"#TITLE_FEMALE# #NAMES_FEMALE_FIRST# and #THEM# have been #OUTCOMES#",
+			""
+	)),
+	
+	SENT_K(new PhraseList(
+			"#THINGS+%CAP# #INVOLVED#",
+			"#THE+%CAP# outcome of this has caused #THINGS# to be #OUTCOMES#",
+			""
+	)),
+	
+	THEM(new PhraseList(
+			"family",
+			"a group of #THINGS#",
+			"faithful companion, #ANIMAL_SING#,",
+			"friends",
+			"the populace of #PLACE_1+%CAP##PLACE_2#",
+			"wife, #NAMETYPE#,",
+			"husband, #NAMETYPE#,",
+			""
+	)),
+	
+	A(new PhraseList(
+		"a"	
+	)),
+	
+	INVOLVED(new PhraseList(
+			"may have been involved",
+			"were certainly involved",
+			"were most definitely not involved",
+			"were involved",
+			"were not involved",
+			"can in no way have been involved",
+			"are suspected of being involved",
+			"should be considered involved",
+			"are the perpetrators",
+			"are the subject of an on-going investigation",
+			"give rise for concern",
+			"are being hunted down",
+			"are wanted in connection with this event",
+			"are to blame for this",
+			"are very, very naughty",
+			"should be avoided at all costs, due to the associated investigation",
+			""
+	)),
+	
+	WHERE(new PhraseList(
+			"home",
+			"back to school",
+			"to a secret place",
+			"to a safe place",
+			"into hiding",
+			"off-world",
+			"down a well",
+			"#TO# #PLACE_1+%CAP##PLACE_2#",
+			"#TO# the residence of #TITLE_MALE# #NAMES_LAST#",
+			"#TO# the residence of #TITLE_FEMALE# #NAMES_LAST#",
+			"to bed",
+			"to college",
+			"to university",
+			"to the North Pole",
+			"to the South Pole",
+			"to The End",
+			"to The Nether",
+			"to deep space",
+			"to a field",
+			"to a cosy cottage",
+			"#TO# a cosy cottage in #PLACE_1+%CAP##PLACE_2#",
+			"up a tree",
+			"up a mountain",
+			"up to 300 feet in the air",
+			"around the world",
+			""
+	)),
+	
+	TO(new PhraseList(
+			"to"
 			
 	)),
 	
@@ -5112,6 +5397,7 @@ public enum Symbol {
 			}
 		}
 	},
+	
 	
 	MC_BLOCK(null){
 		private boolean cached = false;
