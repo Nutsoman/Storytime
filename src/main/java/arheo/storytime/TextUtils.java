@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import arheo.storytime.PhraseList.Phrase;
+import arheo.storytime.Story.Thing;
 
 public class TextUtils {
 	private static final Pattern pattern = Pattern.compile("#(.*?)#");
@@ -43,6 +44,18 @@ public class TextUtils {
 				if (words.length > 1 && format) {
 					for (int i=1; i<words.length; i++) {
 						replacement = Formatting.format(replacement, words[i]);
+						if (words[i].startsWith("~")) {
+							String name = words[i].substring(1);
+							Storytime.logger.info("before");
+							Storytime.logger.info(story.things);
+							Storytime.logger.info("after");
+							if (!story.things.containsKey(name)) {
+								story.things.put(name,new Thing(stringtrans(replacement.text,story)));
+							}
+							replacement = new Phrase(story.things.get(name).name);
+							Storytime.logger.info(story.things);
+		
+						}
 					}
 				}
 				

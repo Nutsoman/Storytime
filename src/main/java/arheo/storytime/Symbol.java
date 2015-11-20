@@ -15,11 +15,176 @@ import static arheo.storytime.Phrases.*;
 
 public enum Symbol {
 
+	FOURTY_NUMBER(null){
+		private Random rand = new Random();
+		@Override
+		public Phrase getPhrase() {
+			return new Phrase(String.valueOf((int)Math.floor(39*rand.nextDouble()*rand.nextDouble())+1),1.0);		
+		}
+	},
+	
 	TESTPAGE(new PhraseList(
-			"#SENT_A# #SENT_J#. #SENT_I#. #SENT_K#. More news #TIMES_FUTURE#."
+			//"#SENT_A# #SENT_J#. #SENT_I#. #SENT_K#. More news #TIMES_FUTURE#.",
+			"#REC_B#. #REC_D#. #REC_E#. #REC_F#.",
+			""
 			
 			
 	)),
+	
+	REC_A(new PhraseList(
+			"This week",
+			"Today",
+			"In today's session",
+			"Continuing from last week's exercise",
+			"Before getting started",
+			"To prepare this dish",
+			"Prior to cooking",
+			""
+	)),
+	
+	REC_B(new PhraseList(
+			"#REC_A#, #REC_C# #FOURTY_NUMBER# #FOOD_BASIC+~PREP1#s, #FOURTY_NUMBER# #FOOD_BASIC+~PREP2#s, and #FOURTY_NUMBER# #FOOD_BASIC+~PREP3#s",
+			"#TO# get started, #REC_C# #FOURTY_NUMBER# #THINGS+~PREP1#, and #FOURTY_NUMBER# #FOOD_BASIC+~PREP2#s",
+			"#REC_A#, grab a #NOUNS_BASIC+~PREP1#",
+			"#REC_A#, grab a #ANIMAL_SING+~PREP1#",
+			""
+			
+			
+	)),
+	
+	REC_C(new PhraseList(
+			"you will need to acquire",
+			"you must purchase",
+			"hunt down",
+			"farm",
+			"gather",
+			"acquire",
+			"thoroughly wash",
+			"have your servant bring you",
+			"conjure up",
+			"pray to the gods for",
+			"assemble",
+			"find",
+			"retrieve",
+			"collect",
+			"will into existence",
+			""
+					
+					
+	)),
+	
+	REC_D(new PhraseList(
+			"#ADV# #FOOD_PREP_1# the #A+~PREP1#, and #FOOD_PREP_2# for #FOURTY_NUMBER# minutes",
+			"#FOOD_PREP_1# the #A+~PREP1, then #FOOD_PREP_2#, #ADV#",
+			""
+			
+	)),
+	
+	FOOD_PREP_1(new PhraseList(
+			"chop",
+			"fillet",
+			"cut",
+			"beat",
+			"blanche",
+			"flatten",
+			"dice",
+			"mince",
+			"roll",
+			"trim",
+			"wash",
+			w("lick", 0.25),
+			"slice",
+			"cleave",
+			"clean",
+			"prepare",
+			"skin",
+			"peel",
+			"skewer",
+			""
+			
+			
+	)),
+	
+	FOOD_PREP_2(new PhraseList(
+			"boil",
+			"broil",
+			"simmer",
+			"roast",
+			"stew",
+			"fry",
+			"deep-fry",
+			"toast",
+			"scorch",
+			"shake",
+			"sear",
+			"stir",
+			"batter",
+			w("lick", 0.25),
+			"bake",
+			"cure",
+			"smoke",
+			"wrap",
+			"microwave",
+			"stir-fry",
+			"poach",
+			w("cast it into a pond", 0.5),
+			""
+			
+			
+	)),
+	
+	REC_E(new PhraseList(
+			"#TIMES_FUTURE#, add a handful of #SEASONING+~PREP2#, then #FOOD_PREP_1# for a further #FOURTY_NUMBER# minutes",
+			"Add in some #SEASONING+~PREP2#, a little #SEASONING+~PREP3#",
+			""
+			
+	)),
+	
+	REC_F(new PhraseList(
+			"Enjoy responsibly",
+			"Serve with #THINGS#",
+			"Serves #FOURTY_NUMBER#",
+			""
+	)),
+	
+	SEASONING(new PhraseList(
+			w("salt", 5.0),
+			w("pepper", 4.0),
+			"cayenne",
+			"paprika",
+			"seasoning",
+			"toast",
+			"grog",
+			"chilli",
+			"curry powder",
+			"garlic",
+			"redstone",
+			"glowstone",
+			"gunpowder",
+			"matchsticks",
+			"ducks",
+			"lemon zest",
+			"rosemary",
+			"thyme",
+			"cinnamon",
+			"bayleaf",
+			"artichoke hearts",
+			"coriander",
+			"mint",
+			"extra strong #SEASONING#",
+			"iron filings",
+			"ghast tears",
+			"magma cream",
+			"nether wart",
+			""
+			
+	)),
+	
+	
+	
+	
+	
+	
 	
 	SENT_A(new PhraseList(
 			"News emerges that",
@@ -189,7 +354,6 @@ public enum Symbol {
 			"after entropy has destroyed the cosmos",
 			"in a tick",
 			"in several days",
-			", in a banana-boat",
 			""
 	)),
 	
@@ -4874,7 +5038,6 @@ public enum Symbol {
 			"searchingly",
 			"sedately",
 			"seemingly",
-			"seldom",
 			"selfishly",
 			"separately",
 			"seriously",
@@ -5013,7 +5176,6 @@ public enum Symbol {
 			"toothpaste",
 			"crab",
 			"lobster",
-			"rotten flesh",
 			"lemming",
 			"bee brain",
 			"life essence",
@@ -5033,13 +5195,11 @@ public enum Symbol {
 			"egg",
 			"bean",
 			"runner bean",
-			"haricot verts",
+			"green bean",
 			"onion",
 			"garlic",
 			"orange peel",
 			"mushroom",
-			"moss",
-			"grass",
 			"blood",
 			"black pudding",
 			"offal",
