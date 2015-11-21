@@ -24,8 +24,8 @@ public enum Symbol {
 	},
 	
 	TESTPAGE(new PhraseList(
-			//"#SENT_A# #SENT_J#. #SENT_I#. #SENT_K#. More news #TIMES_FUTURE#.",
-			"#REC_B#. #REC_D#. #REC_E#. #REC_F#.",
+			"#SENT_A# #SENT_J#. #SENT_I#. #SENT_K#. More news #TIMES_FUTURE#.",
+			//"#REC_H#.\n#REC_B#.\n#REC_D#. #REC_E#. #REC_G#. #REC_I#.\n#REC_F#.",
 			""
 			
 			
@@ -44,9 +44,10 @@ public enum Symbol {
 	
 	REC_B(new PhraseList(
 			"#REC_A#, #REC_C# #FOURTY_NUMBER# #FOOD_BASIC+~PREP1#s, #FOURTY_NUMBER# #FOOD_BASIC+~PREP2#s, and #FOURTY_NUMBER# #FOOD_BASIC+~PREP3#s",
-			"#TO# get started, #REC_C# #FOURTY_NUMBER# #THINGS+~PREP1#, and #FOURTY_NUMBER# #FOOD_BASIC+~PREP2#s",
-			"#REC_A#, grab a #NOUNS_BASIC+~PREP1#",
+			"#TO# get started, #REC_C# #FOURTY_NUMBER# #FOOD_BASIC+~PREP1#, and #FOURTY_NUMBER# #FOOD_BASIC+~PREP2#s",
+			"#REC_A#, grab a #FOOD_BASIC+~PREP1#",
 			"#REC_A#, grab a #ANIMAL_SING+~PREP1#",
+			"A guide to preparing #FOOD_PRODUCT+~PROD1#. #REC_A# #REC_C# #FOURTY_NUMBER# #FOOD_BASIC+~PREP1#, #FOURTY_NUMBER# #FOOD_BASIC+~PREP2# and a selection of spices",
 			""
 			
 			
@@ -60,22 +61,23 @@ public enum Symbol {
 			"gather",
 			"acquire",
 			"thoroughly wash",
-			"have your servant bring you",
+			w("have your servant bring you", 0.5),
 			"conjure up",
-			"pray to the gods for",
+			w("pray to the gods for", 0.25),
 			"assemble",
 			"find",
 			"retrieve",
 			"collect",
-			"will into existence",
+			w("will into existence", 0.25),
 			""
 					
 					
 	)),
 	
 	REC_D(new PhraseList(
-			"#ADV# #FOOD_PREP_1# the #A+~PREP1#, and #FOOD_PREP_2# for #FOURTY_NUMBER# minutes",
-			"#FOOD_PREP_1# the #A+~PREP1, then #FOOD_PREP_2#, #ADV#",
+			"#ADV+%CAP# #FOOD_PREP_1# the #SEASONING+~PREP1#, and #FOOD_PREP_2# for #FOURTY_NUMBER# minutes",
+			"#FOOD_PREP_1+%CAP# the #SEASONING+~PREP1#, then #FOOD_PREP_2#, #ADV#",
+			"#FOOD_PREP_1+%CAP# the #FOOD_BASIC+~PREP1#, and #FOOD_PREP_2+~BAKE1#. As the #FOOD_BASIC+~PREP1# #FOOD_PREP_2+~BAKE1#s, #FOOD_PREP_1# the #FOOD_BASIC+~PREP2#",
 			""
 			
 	)),
@@ -100,6 +102,10 @@ public enum Symbol {
 			"skin",
 			"peel",
 			"skewer",
+			"stir",
+			"cure",
+			"wrap",
+			"shake",
 			""
 			
 			
@@ -115,37 +121,149 @@ public enum Symbol {
 			"deep-fry",
 			"toast",
 			"scorch",
-			"shake",
 			"sear",
-			"stir",
 			"batter",
 			w("lick", 0.25),
 			"bake",
-			"cure",
 			"smoke",
-			"wrap",
 			"microwave",
 			"stir-fry",
 			"poach",
-			w("cast it into a pond", 0.5),
+			""
+			
+			
+	)),
+	
+	FOOD_PREP_3(new PhraseList(
+			"garnish",
+			"decorate",
+			"ice",
+			"complete",
+			"drizzle",
+			"brush",
+			"coat",
+			"sprinkle",
+			"glaze",
+			"ornament",
+			"stack",
+			""
+			
+	)),
+	
+	SIZE2(new PhraseList(
+			" big",
+			w(" small", 2.0),
+			w(" large", 2.0),
+			w(" moderately sized", 2.0),
+			" tiny",
+			" huge",
+			"n average",
+			" colossal",
+			" vast",
+			" minute",
+			"n infitesimally small",
+			" gargantuan",
+			"n unholy",
+			" super #SIZE#",
+			"n extra #SIZE#",
+			""
+	)),
+	
+	SIZE1(new PhraseList(
+			"big",
+			w("small", 2.0),
+			w("large", 2.0),
+			w("moderately sized", 2.0),
+			"tiny",
+			"huge",
+			"average",
+			"colossal",
+			"vast",
+			"minute",
+			"infitesimally small",
+			"gargantuan",
+			"unholy",
+			"super #SIZE#",
+			"extra #SIZE#",
+			""
+	)),
+	
+	
+	FOOD_PREP_4(new PhraseList(
+			"forge",
+			"fold",
+			"form",
+			"pack",
+			"roll",
+			"mix",
+			"stir",
+			"assemble",
+			""
+			
+			
+	)),
+	
+	
+	REC_I(new PhraseList(
+			"All that remains is to #FOOD_PREP_4# the product into the perfect #SEASONING+~PROD1#",
+			"#FOOD_PREP_4+%CAP# the mixture into #SIZE1# #SEASONING+~PROD1#",
+			"Make an array of #SIZE1# #SEASONING+~PROD1#, and #FOOD_PREP_2# until ready",
 			""
 			
 			
 	)),
 	
 	REC_E(new PhraseList(
-			"#TIMES_FUTURE#, add a handful of #SEASONING+~PREP2#, then #FOOD_PREP_1# for a further #FOURTY_NUMBER# minutes",
-			"Add in some #SEASONING+~PREP2#, a little #SEASONING+~PREP3#",
+			"#TIMES_FUTURE#, add a handful of #SEASONING+~PREP3#, then #FOOD_PREP_2# for a further #FOURTY_NUMBER# minutes",
+			"Add in some #SEASONING+~PREP2#, and a little #SEASONING+~PREP3#",
+			"#TIMES_FUTURE#, add the remaining #SEASONING+~PREP3#, #FOOD_PREP_2# #ADV#, then liberally apply #SEASONING#",
 			""
 			
 	)),
 	
 	REC_F(new PhraseList(
-			"Enjoy responsibly",
+			w("Enjoy responsibly", 0.5),
 			"Serve with #THINGS#",
 			"Serves #FOURTY_NUMBER#",
+			"This dish is popular with #PEOPLE_PLURAL#",
 			""
 	)),
+	
+	REC_G(new PhraseList(
+			"Finally, use any remaining #FOOD_BASIC+~PREP1# to #FOOD_PREP_3# the dish",
+			"#FOOD_PREP_3+%CAP# with #SEASONING+~PREP3#, and #SERVE#",
+			"Use the #SEASONING+~PREP3# to #FOOD_PREP_3#, then #SERVE#",
+			""
+			
+	)),
+	
+	REC_H(new PhraseList(
+			"#FOOD_PRODUCT+~PROD1+%CAP# - Edition #FOURTY_NUMBER#",
+			"Creating lovely #SEASONING+~PROD1#",
+			"Tasty #SEASONING+~PROD1#",
+			"#FOOD_PRODUCT+~PROD1+%CAP# - Volume #FOURTY_NUMBER#",
+			""
+			
+			
+	)),
+	
+	
+	
+	SERVE(new PhraseList(
+			"place decoratively on a platter",
+			w("throw it on the ground", 0.1),
+			"you are ready to go",
+			"polish",
+			"smile, #ADV#",
+			"arrange appropriately",
+			"serve to your party of #PEOPLE_PLURAL#",
+			"leave to harden for a further #FOURTY_NUMBER# minutes",
+			"leave to soften for a further #FOURTY_NUMBER# minutes",
+			"leave to cool for a further #FOURTY_NUMBER# minutes",
+			""
+			
+	)),
+	
 	
 	SEASONING(new PhraseList(
 			w("salt", 5.0),
@@ -315,7 +433,7 @@ public enum Symbol {
 			"hailed",
 			"applauded",
 			"rewarded",
-			"employed, full time",
+			"employed full time",
 			"given back-massages",
 			""
 	)),
@@ -343,7 +461,7 @@ public enum Symbol {
 			"next week",
 			"next year",
 			"in due course",
-			"when we can be bothered",
+			w("when one can be bothered", 0.25),
 			"at a later date",
 			"in time",
 			"in a few hours",
@@ -351,7 +469,7 @@ public enum Symbol {
 			"forthwith",
 			"at lunchtime",
 			"at dinnertime",
-			"after entropy has destroyed the cosmos",
+			w("after entropy has destroyed the cosmos", 0.25),
 			"in a tick",
 			"in several days",
 			""
@@ -373,6 +491,14 @@ public enum Symbol {
 			
 	)),
 			
+	
+	THING(new PhraseList(
+			"#NOUNS_BASIC#",
+			"#ANIMAL_SING#",
+			""
+			
+	)),
+	
 	THINGS(new PhraseList(
 			"#NOUNS_BASIC_PLURAL#",
 			"#PEOPLE_PLURAL#",
@@ -381,36 +507,141 @@ public enum Symbol {
 	)),
 	
 	SENT_I(new PhraseList(
-			"#CONT_ADVERB_CAPS# they were #VERB_PAST# by #THINGS#",
-			"#SENT_A# they #VERB_PAST# their way #WHERE#",
+			"The #PEOPLE_PLURAL+~SUBJ1# ended up being #APPREHENDED#",
+			"#CONT_ADVERB_CAPS# the #PEOPLE_PLURAL+~SUBJ1# and friends #ESCAPED# to #WHERE+~DEST1#. #DESTOUT#",
+			"After being #VERB_PAST+~OUT1#, the #PEOPLE_PLURAL+~SUBJ1# and several onlookers #INVOLVED2# in #CRIME#",
+			"After being #VERB_PAST+~OUT1#, the #PEOPLE_PLURAL+~SUBJ1# and friends #ESCAPED# #PLACE_1+~P1+%CAP##PLACE_2+~P2#",
+			"Having been #VERB_PAST+~OUT1#, #PEOPLE_PLURAL+~SUBJ2# accused #PEOPLE_PLURAL+~SUBJ1# of #CRIME#"
+			
+	)),
+	
+	
+	DESTOUT(new PhraseList(
+			"Upon arrival at #WHERE+~DEST1#, #CRIME# appeared to be the only thing on their minds",
+			"After reaching #WHERE+~DEST1#, they #ADV# #ESCAPED# an unknown location",
+			"Several #PEOPLE_PLURAL# #SAWPP# them #DESTOUT2# the scene"
+			
+	)),
+	
+	SAWPP(new PhraseList(
+			"spotted",
+			"saw",
+			"spied",
+			"noticed",
+			"took note of",
+			"recorded",
+			"took surveillance of",
+			""
+			
+	)),
+	
+	DESTOUT2(new PhraseList(
+			"fleeing",
+			"escaping",
+			"running from",
+			"legging it from",
+			"making a get-away from",
+			"playing football at",
+			""
+			
+			
+	)),
+	
+	
+	CRIME(new PhraseList(
+			"grand theft #THING#",
+			"#THING# smuggling",
+			"trafficking #PEOPLE_PLURAL#",
+			"forgery of #NOUNS_BASIC_PLURAL#",
+			"a number of crimes",
+			"assaulting Mrs Beeton",
+			"creating suspicious #FOOD_PRODUCT#",
+			"a shocking display of #CRIME#",
+			"a shocking display of #VERB_PRES#",
+			"jousting",
+			"dancing",
+			"an #ADJ# display of #VERB_PRES#",
+			"looting",
+			"theft of #THINGS#",
+			"kidnapping a#SIZE2# #ANIMAL_SING#",
+			"making off with a#SIZE2# #NOUNS_BASIC#",
+			""
+			
+			
+			
+	)),
+	
+	ESCAPED(new PhraseList(
+			w("escaped to", 0.5),
+			"made their way to",
+			"secreted themselves in",
+			"sieged their way to",
+			"pillaged their way to",
+			"abandoned ship in",
+			"sacked their way to",
+			"left the area, and headed to",
+			"assumed control of",
+			"invaded the centre of",
+			"ran away, to",
+			"liberated the heartlands of",
+			""
+			
+	)),
+	
+	
+	APPREHENDED(new PhraseList(
+			w("arrested", 0.5),
+			"detained",
+			"caught",
+			"interviewed by police",
+			"cautioned",
+			"given a sharp slap on the wrist",
+			"tested for drugs",
+			"allowed to walk free",
+			"stabbed in the back",
+			"told off",
 			""
 			
 	)),
 	
 	SENT_J(new PhraseList(
-			"a group of #VERB_PRES# #PEOPLE_PLURAL# #SENT_B# #VERB_PRES#",
-			"a #ADJ# #ANIMAL_SING# was #OUTCOMES# by #THINGS# #TIMES_PAST#",
-			"#TITLE_MALE# #NAMES_MALE_FIRST# and #THEM# have been #OUTCOMES#",
-			"#TITLE_FEMALE# #NAMES_FEMALE_FIRST# and #THEM# have been #OUTCOMES#",
+			"a group of #PEOPLE_PLURAL+~SUBJ1# #SENT_B# engaging in #CRIME+~ACT1# in #PLACE_1+~P1+%CAP##PLACE_2+~P2#",
+			"a#SIZE2# #ANIMAL_SING+~SUBJ1# was #OUTCOMES+~OUT1# by #THINGS+~SUBJ2# #TIMES_PAST#",
+			"#TITLE_MALE+~SUBJ1# #NAMES_MALE_FIRST+~SUBJ1B# and #THEM+~SUBJ2# have been #OUTCOMES+~OUT1#",
+			"#TITLE_FEMALE+~SUBJ1# #NAMES_FEMALE_FIRST+SUBJ1B# and #THEM+~SUBJ2# have been #OUTCOMES+~OUT1#",
 			""
 	)),
 	
 	SENT_K(new PhraseList(
-			"#THINGS+%CAP# #INVOLVED#",
-			"#THE+%CAP# outcome of this has caused #THINGS# to be #OUTCOMES#",
+			"#THINGS+~SUBJ1+%CAP# #INVOLVED#",
+			"#THE+%CAP# outcome of this has caused the #THINGS+~SUBJ1# to be sent to #WHERE# #SENT_L#",
+			"#THE+%CAP# resultant chain of events caused the #THINGS+~SUBJ1# to be sent to #WHERE# #SENT_L#",
+			"Worryingly, the #THINGS+~SUBJ1# and fellow perpetrators have not been recovered",
+			"#THEM+~SUBJ2+# declined to comment",
 			""
 	)),
 	
 	THEM(new PhraseList(
-			"family",
+			"their family",
 			"a group of #THINGS#",
 			"faithful companion, #ANIMAL_SING#,",
-			"friends",
-			"the populace of #PLACE_1+%CAP##PLACE_2#",
+			"their friends",
+			"the populace of #PLACE_1+~P1+%CAP##PLACE_2+~P2#",
 			"wife, #NAMETYPE#,",
 			"husband, #NAMETYPE#,",
 			""
 	)),
+	
+	SENT_L(new PhraseList(
+			"where they will be #OUTCOMES#",
+			"to atone for their sins",
+			"to serve the remainder of their sentence",
+			"for #FOURTY_NUMBER# years",
+			""
+			
+			
+	)),
+	
 	
 	A(new PhraseList(
 		"a"	
@@ -436,32 +667,46 @@ public enum Symbol {
 			""
 	)),
 	
+	INVOLVED2(new PhraseList(
+			"may have been involved",
+			"were certainly involved",
+			"were most definitely not involved",
+			"were involved",
+			"were not involved",
+			"can in no way have been involved",
+			"are suspected of being involved",
+			"should be considered involved",
+			""
+			
+	)),
+	
+	
 	WHERE(new PhraseList(
-			"home",
-			"back to school",
-			"to a secret place",
-			"to a safe place",
-			"into hiding",
-			"off-world",
-			"down a well",
-			"#TO# #PLACE_1+%CAP##PLACE_2#",
-			"#TO# the residence of #TITLE_MALE# #NAMES_LAST#",
-			"#TO# the residence of #TITLE_FEMALE# #NAMES_LAST#",
-			"to bed",
-			"to college",
-			"to university",
-			"to the North Pole",
-			"to the South Pole",
-			"to The End",
-			"to The Nether",
-			"to deep space",
-			"to a field",
-			"to a cosy cottage",
-			"#TO# a cosy cottage in #PLACE_1+%CAP##PLACE_2#",
-			"up a tree",
-			"up a mountain",
-			"up to 300 feet in the air",
-			"around the world",
+			w("a home", 0.5),
+			"a school",
+			"a secret place",
+			"a safe place",
+			"a hiding place",
+			"an off-world destination",
+			"a hole in the ground",
+			"#PLACE_1+%CAP##PLACE_2#",
+			"the residence of #TITLE_MALE# #NAMES_LAST#",
+			"the residence of #TITLE_FEMALE# #NAMES_LAST#",
+			"bed",
+			"college",
+			"university",
+			"the North Pole",
+			"the South Pole",
+			"The End",
+			"The Nether",
+			"deep space",
+			"a field",
+			"a cosy cottage",
+			"a cosy cottage in #PLACE_1+%CAP##PLACE_2#",
+			"the top of a tree",
+			"the top of mountain",
+			"around 300 feet in the air",
+			"a distant exoplanet",
 			""
 	)),
 	
@@ -495,7 +740,7 @@ public enum Symbol {
 	)),
 	
 	TITLETYPE(new PhraseList(
-			"#TITLE_MALE+%CAP# of the #ANIMAL_PLURAL+%CAP#",
+			/*"#TITLE_MALE+%CAP# of the #ANIMAL_PLURAL+%CAP#",
 			"#ADJ+%CAP# #MC_ITEM+%CAP#",
 			"#ADJ+%CAP# #NOUNS_BASIC+%CAP#",
 			"#ADJ+%CAP# Tales",
@@ -535,18 +780,18 @@ public enum Symbol {
 			"#ADJ+%CAP# #NOUNS_BASIC+%CAP#-#NOUNS_BASIC_PLURAL+%CAP#",
 			"#ADJ+%CAP# #MC_BLOCK+%CAP#",
 			"#PRONOUN+%CAP# #VERB_PAST+%CAP#",
-			"#PRONOUN+%CAP# #VERB_PAST+%CAP# - It Was #ADJ+%CAP#",
+			"#PRONOUN+%CAP# #VERB_PAST+%CAP# - It Was #ADJ+%CAP#",*/
 			
 			//Recipe Books
 			
-			"#RECIPE_BOOKTYPE# #FOOD_BASIC+%CAP# #FOOD_PRODUCT+%CAP#",
-			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY+%CAP# #FOOD_BASIC+%CAP# #FOOD_PRODUCT+%CAP#",
-			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY+%CAP# #ANIMAL_SING+%CAP# #FOOD_PRODUCT+%CAP#",
-			"#RECIPE_BOOKTYPE# #FOOD_BASIC+%CAP# and #ANIMAL_SING+%CAP# #FOOD_PRODUCT+%CAP#",
+			"#RECIPE_BOOKTYPE# #FOOD_BASIC+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP#",
+			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY+%CAP# #FOOD_BASIC+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP#",
+			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY+%CAP# #ANIMAL_SING+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP#",
+			"#RECIPE_BOOKTYPE# #FOOD_BASIC+~PREP1+%CAP# and #ANIMAL_SING+~PREP2+%CAP# #FOOD_PRODUCT+~PROD1+%CAP#"
 			
 			//Newspapers NEWS_TITLE_1 NEWS_TITLE_2 THE PLACE_1 PLACE_2
 			
-			"#THE+%CAP# #NEWS_TITLE_1+%CAP# #NEWS_TITLE_2+%CAP#",
+			/*"#THE+%CAP# #NEWS_TITLE_1+%CAP# #NEWS_TITLE_2+%CAP#",
 			"#THE+%CAP# #PLACE_1+%CAP##PLACE_2# #NEWS_TITLE_2+%CAP#",
 			"#THE+%CAP# #ANIMAL_SING+%CAP##PLACE_2# #NEWS_TITLE_2+%CAP#",
 			"#THE+%CAP# #PLACE_1+%CAP##PLACE_2# #ANIMAL_SING+%CAP#",
@@ -561,7 +806,7 @@ public enum Symbol {
 			"#BOOKTYPE# #PLACE_1+%CAP##PLACE_2#",
 			"#BOOKTYPE# #FOOD_BASIC+%CAP##PLACE_2#",
 			"#THE+%CAP# #VERB_PRES+%CAP# at #FOOD_PRODUCT+%CAP##PLACE_2#",
-			"#NAMES_FIRST+%CAP# and the #ADJ+%CAP# #MC_ITEM+%CAP#"
+			"#NAMES_FIRST+%CAP# and the #ADJ+%CAP# #MC_ITEM+%CAP#"*/
 			
 	)),
 	
@@ -961,7 +1206,7 @@ public enum Symbol {
 			"air",
 			"teachers",
 			"forces",
-			"education",
+			"educations",
 			"homes",
 			"trails",
 			"powders",
@@ -5216,7 +5461,9 @@ public enum Symbol {
 			"peanut butter",
 			"butter",
 			"margerine",
-			"coconut"
+			"coconut",
+			"#THING#",
+			""
 
 			
 			
