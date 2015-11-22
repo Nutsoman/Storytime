@@ -65,7 +65,7 @@ public class BookRecipe implements IRecipe {
 	}
 
 	public List<String> ubermethod(Story story) {
-		int charcount = 14*20 -5;
+		int charcount = 12*20 -5;
 		List<String> pages = new ArrayList<String>();
 		String completestory = story.content;
 		//pages.add(completestory);

@@ -23,35 +23,201 @@ public enum Symbol {
 		}
 	},
 	
+	TWOHUNDRED_NUMBER(null){
+		private Random rand = new Random();
+		@Override
+		public Phrase getPhrase() {
+			return new Phrase(String.valueOf((int)Math.floor(200*rand.nextDouble()*rand.nextDouble())+1),1.0);		
+		}
+	},
+	
 	TESTPAGE(new PhraseList(
 			"#SENT_A# #SENT_J#. #SENT_I#. #SENT_K#. More news #TIMES_FUTURE#.",
-			//"#REC_H#.\n#REC_B#.\n#REC_D#. #REC_E#. #REC_G#. #REC_I#.\n#REC_F#.",
 			""
 			
 			
 	)),
 	
+	//REC_F NEEDS REWRITING
+	
+	TESTPAGE2(new PhraseList(
+			"#REC_H#.\n#INGREDIENTS#\n#OVENPREP#. #REC_D#. #REC_E#. #REC_G#. #REC_I#.\n#REC_F#.",
+			"#INGREDIENTS#\n #OVENPREP#. #REC_AB#. #REC_IB#. #REC_BB#. #REC_G#.\n#REC_F#.",
+			
+			""
+	)),
+	
+	
+	INGREDIENTS(new PhraseList(
+			"#REC_A# #REC_C# the following: \n\n #FOURTY_NUMBER##IMP# #FOOD_BASIC+~PREP1# \n #FOURTY_NUMBER##IMP# #FOOD_BASIC+~PREP2# \n #FOURTY_NUMBER##IMP# #FOOD_BASIC+~PREP3#\n",
+			""
+			
+	)),
+	
+	OVENPREP(new PhraseList(
+			w("First, #OP1# your #COOKER+~COOK1# to #OVENTEMP+~TEMP1#", 0.75),
+			"This recipe requires a #COOKER+~COOK1# and a #COOKER+~COOK2#",
+			"Using a #COOKER+~COOK1# is highly recommended, however a #COOKER+~COOK2# will suffice",
+			"We'll be using a #COOKER+~COOK1# for this, but don't worry! A #COOKER+~COOK2# will do the trick",
+			"The optimal temperature for producing this #FOOD_PRODUCT+~PROD1# is #OVENTEMP+~TEMP1#",
+			"Ideally, a #COOKER+~COOK1# set to #OVENTEMP+~TEMP1# should be at your disposal",
+			"We'll need to bung the #FOOD_BASIC+~PREP3# in the #COOKER+~COOK1# for #FOURTY_NUMBER# minutes whilst handling the next step",
+			"Before starting the next step, place 2 #IMP# of #FOOD_BASIC+~PREP1# in a #COOKER+~COOK1#, for use as a garnish",
+			""
+			
+	)),
+	
+	REC_AB(new PhraseList(
+			"We'll begin by making a light #FOOD_BASIC+~PREP1# #MUSH#. #FOOD_PREP_1# the #FOOD_BASIC+~PREP1# and the #FOOD_BASIC+~PREP2# together until they reach a #CONSISTENCY# consistency",
+			"#OP1# the #FOOD_BASIC+~PREP1# to #FOURTY_NUMBER# #OVENTEMP#, and continue to #FOOD_PREP_1# the #FOOD_BASIC+~PREP2#",
+			"You'll need to pop most of the the #FOOD_BASIC+~PREP2# into a #SIZE2# #POTS+~POT1#, and gently #FOOD_PREP_2#",
+			"Throw the lot into a #SIZE2# #POTS+~POT1#. #FOOD_PREP_2+%CAP#",
+			""
+			
+			
+	)),
+	
+	REC_BB(new PhraseList(
+			"Take a #ACTIVITYCONC#, then check the #COOKER+~COOK1#",
+			"Now would be the ideal time for a #ACTIVITYCONC#. Once completed, #FOOD_PREP_4# the #FOOD_BASIC+~PREP3# and prepare to #FOOD_PREP_3# the #FOOD_PRODUCT+~PROD1#.",
+			"#REC_D#",
+			""
+			
+	)),
+	
+	ACTIVITYCONC(new PhraseList(
+			"#LENGTHTIME# #ACTIVITY#",
+			"#LENGTHTIME# #ACTIVITY#",
+			"#LENGTHTIME# #ACTIVITY#",
+			w("#ACTIVITY#", 2.0),
+			""
+			
+			
+			
+	)),
+	
+	ACTIVITY(new PhraseList(
+			"walk",
+			"stroll",
+			"bath",
+			"time to appreciate the finer #NOUNS_BASIC_PLURAL# in life",
+			"hang-gliding session",
+			"painting class",
+			"debt recovery seminar",
+			"break",
+			"moment",
+			"moment to engage in #CRIME#",
+			"meditation",
+			""
+			
+	)),
+	
+	LENGTHTIME(new PhraseList(
+			"short",
+			"long",
+			"very #LENGTH#",
+			"quick",
+			"brisk",
+			"mildly extended",
+			"vigorous",
+			"relaxing",
+			"moderate",
+			"lengthy",
+			""
+			
+			
+			
+	)),
+	
+	OP1(new PhraseList(
+			"heat",
+			"turn up",
+			"warm up",
+			"cool down",
+			"assign",
+			"dial up",
+			"order",
+			"command",
+			"preheat",
+			"crank up",
+			""
+	)),
+	
+	COOKER(new PhraseList(
+			"oven",
+			"microwave",
+			"cooker",
+			"hob",
+			"grill",
+			"fridge",
+			"bread-maker",
+			"slow-cooker",
+			"pressure-cooker",
+			"hyperbaric chamber",
+			"cryogenic cooking pod",
+			"stove",
+			"hearth",
+			"fire pit",
+			"complicated array of lenses, powered by the sun",
+			"lava furnace",
+			"furnace",
+			""
+			
+	)),
+	
+	OVENTEMP(new PhraseList(
+			"#TWOHUNDRED_NUMBER# #TEMPUNITS#",
+			"#TWOHUNDRED_NUMBER# #TEMPUNITS#",
+			"#FOURTY_NUMBER# #TEMPUNITS#",
+			"Gas Mark #FOURTY_NUMBER#",
+			w("#TWOHUNDRED_NUMBER# #TEMPUNITS#", 0.5),
+			""
+			
+	)),
+	
+	TEMPUNITS(new PhraseList(
+			"Celsius",
+			"Fahrenheit",
+			w("Kelvin", 0.5),
+			"Kilowatt Hours",
+			"Accumulated Thermal Units",
+			"Gradus Caloris",
+			"Newtons",
+			"Units of Redstone Flux",
+			"Electrical Units",
+			"Watts",
+			w("x10^#FOURTY_NUMBER# eV", 0.25),
+			""
+	)),
+	
+	IMP(new PhraseList(
+			"lb",
+			"oz",
+			"fl oz",
+			w("t", 0.25),
+			"dr",
+			"gr",
+			w("cwt", 0.25),
+			"qtr",
+			w("troy oz", 0.1),
+			""
+			
+	)),
+	
 	REC_A(new PhraseList(
-			"This week",
+			w("This week", 0.5),
 			"Today",
 			"In today's session",
 			"Continuing from last week's exercise",
 			"Before getting started",
 			"To prepare this dish",
 			"Prior to cooking",
+			"To start,",
+			"As is customary, say a short prayer, then",
+			"Begin by",
 			""
 	)),
-	
-	REC_B(new PhraseList(
-			"#REC_A#, #REC_C# #FOURTY_NUMBER# #FOOD_BASIC+~PREP1#s, #FOURTY_NUMBER# #FOOD_BASIC+~PREP2#s, and #FOURTY_NUMBER# #FOOD_BASIC+~PREP3#s",
-			"#TO# get started, #REC_C# #FOURTY_NUMBER# #FOOD_BASIC+~PREP1#, and #FOURTY_NUMBER# #FOOD_BASIC+~PREP2#s",
-			"#REC_A#, grab a #FOOD_BASIC+~PREP1#",
-			"#REC_A#, grab a #ANIMAL_SING+~PREP1#",
-			"A guide to preparing #FOOD_PRODUCT+~PROD1#. #REC_A# #REC_C# #FOURTY_NUMBER# #FOOD_BASIC+~PREP1#, #FOURTY_NUMBER# #FOOD_BASIC+~PREP2# and a selection of spices",
-			""
 			
-			
-	)),
 	
 	REC_C(new PhraseList(
 			"you will need to acquire",
@@ -78,6 +244,94 @@ public enum Symbol {
 			"#ADV+%CAP# #FOOD_PREP_1# the #SEASONING+~PREP1#, and #FOOD_PREP_2# for #FOURTY_NUMBER# minutes",
 			"#FOOD_PREP_1+%CAP# the #SEASONING+~PREP1#, then #FOOD_PREP_2#, #ADV#",
 			"#FOOD_PREP_1+%CAP# the #FOOD_BASIC+~PREP1#, and #FOOD_PREP_2+~BAKE1#. As the #FOOD_BASIC+~PREP1# #FOOD_PREP_2+~BAKE1#s, #FOOD_PREP_1# the #FOOD_BASIC+~PREP2#",
+			"#IMPLEMENT+~MIX1#, then #FOOD_PREP_1# the #SEASONING+~PREP1# with a little #SEASONING#",
+			"Take a #POTS+~POT1#, and #FOOD_PREP_1# all the ingredients into a #MUSH#",
+			"In a #POTS+~POT1#, create a #MUSH# using half of the #FOOD_BASIC+~PREP3#",
+			"#FOOD_PREP_1+%CAP# the #FOOD_BASIC+~PREP2# in a #POTS+~POT1# until it becomes #CONSISTENCY+~CON1#",
+			"#FOOD_PREP_4+%CAP# the #FOOD_BASIC+~PREP1# until it is #CONSISTENCY+~CON1# and place in a #POTS+~POT1#",
+			"Place the #FOOD_BASIC+~PREP1# in a warm #POTS+~POT1#, then make a #CONSISTENCY# #MUSH+MUSH1# out of a handful of the #FOOD_BASIC+~PREP3#, and add it to the #POTS+~POT1#",
+			""
+			
+	)),
+	
+	CONSISTENCY(new PhraseList(
+			"light",
+			"fluffy",
+			"#CONSISTENCY# and #CONSISTENCY#",
+			"dense",
+			"coarse",
+			"lumpy",
+			"cracked",
+			"shattered",
+			"liquid",
+			"pureed",
+			"fine",
+			"granulated",
+			"crystalline",
+			w("igneous", 0.25),
+			w("irradiated", 0.25),
+			"puffy",
+			"stiff",
+			"soft",
+			"hard",
+			"solid",
+			"a mess on the floor",
+			"runny",
+			"gelatinous",
+			"purified",
+			""
+			
+	)),
+	
+	
+	IMPLEMENT(new PhraseList(
+			"Acquire a #POTS+~POT1#",
+			"Take a #POTS+~POT1#",
+			"Grab a #POTS+~POT1#",
+			"Place half of the #FOOD_BASIC+~PREP1# and a handful of #FOOD_BASIC+~PREP3# into a #POTS+~POT1#",
+			"Oil a #POTS+~POT1#",
+			"Flour a #POTS+~POT1#",
+			"Warm a #POTS+~POT1# in your #COOKER+~COOK1#",
+			""
+			
+			
+	)),
+	
+	MUSH(new PhraseList(
+			"mixture",
+			"paste",
+			"lump",
+			"batter",
+			"dough",
+			"coarse powder",
+			"fine porridge",
+			"lumpy mess",
+			"solid mass",
+			"cube",
+			"dense filling",
+			""
+			
+			
+	)),
+	
+	POTS(new PhraseList(
+			"mixing bowl",
+			"jug",
+			"pot",
+			"pan",
+			"wok",
+			"ramekin",
+			"wooden mixing platter",
+			"kneading bowl",
+			"clear surface",
+			"disinfected table-top",
+			"gold plated ornery coagulation urn",
+			"tray",
+			""
+			
+	)),
+	
+	CREATE(new PhraseList(
 			""
 			
 	)),
@@ -164,8 +418,8 @@ public enum Symbol {
 			"n infitesimally small",
 			" gargantuan",
 			"n unholy",
-			" super #SIZE#",
-			"n extra #SIZE#",
+			" super #SIZE1#",
+			"n extra #SIZE1#",
 			""
 	)),
 	
@@ -183,8 +437,8 @@ public enum Symbol {
 			"infitesimally small",
 			"gargantuan",
 			"unholy",
-			"super #SIZE#",
-			"extra #SIZE#",
+			"super #SIZE1#",
+			"extra #SIZE1#",
 			""
 	)),
 	
@@ -198,25 +452,54 @@ public enum Symbol {
 			"mix",
 			"stir",
 			"assemble",
+			"stretch",
+			"cast",
+			"build",
 			""
+			
+			
+	)),
+	
+	FINALLY(new PhraseList(
+			w("All that remains is to", 0.5),
+			"When you are ready,",
+			"After washing your hands,",
+			"Once the ingredients have been cooked,",
+			"Finally,",
+			"Then, with great care",
+			"Taking care to avoid mess,",
+			""
+			
 			
 			
 	)),
 	
 	
 	REC_I(new PhraseList(
-			"All that remains is to #FOOD_PREP_4# the product into the perfect #SEASONING+~PROD1#",
+			"#FINALLY# #FOOD_PREP_4# the product into the perfect collection of #SEASONING+~PROD1#",
 			"#FOOD_PREP_4+%CAP# the mixture into #SIZE1# #SEASONING+~PROD1#",
-			"Make an array of #SIZE1# #SEASONING+~PROD1#, and #FOOD_PREP_2# until ready",
+			"#FINALLY# #FOOD_PREP_4# a mound of #SIZE1# #SEASONING+~PROD1#, and #FOOD_PREP_2# until ready",
+			"If you followed this recipe correctly, you should have an aromatic #FOOD_BASIC+~PREP1# #MUSH+~MUSH1#. #FOOD_PREP_4+%CAP# this into #FOOD_PRODUCT+~PROD1#",
 			""
 			
 			
 	)),
 	
+	REC_IB(new PhraseList(
+			"#REC_I#",
+			"This should have given the mixture time to #FINISHING#. Apply the prepared #FOOD_BASIC+~PREP3#. #FINALLY# #FOOD_PREP_4# the #FOOD_PRODUCT+~PROD1#",
+			""
+			
+	)),
+	
+	
 	REC_E(new PhraseList(
-			"#TIMES_FUTURE#, add a handful of #SEASONING+~PREP3#, then #FOOD_PREP_2# for a further #FOURTY_NUMBER# minutes",
+			"#TIMES_FUTURE#, add a handful of #SEASONING+~PREP3#, then place in the #COOKER+~COOK1# for a further #FOURTY_NUMBER# minutes",
 			"Add in some #SEASONING+~PREP2#, and a little #SEASONING+~PREP3#",
-			"#TIMES_FUTURE#, add the remaining #SEASONING+~PREP3#, #FOOD_PREP_2# #ADV#, then liberally apply #SEASONING#",
+			"#TIMES_FUTURE#, add the remaining #SEASONING+~PREP2#, #FOOD_PREP_2# #ADV#, then liberally apply the #SEASONING+~PREP3#",
+			"#TIMES_FUTURE#, combine the ingredients, and place the finished #MUSH+~MUSH1# gently in the #COOKER+~COOK1#",
+			"Combine all the remaining ingredients into your #POTS+~POT1#, and #FOOD_PREP_4#",
+			"Into your #POTS+~POT1#, #FOOD_PREP_4# the prepared #FOOD_BASIC+~PREP1# and the #FOOD_PRODUCT+~MUSH1#, before placing into the #COOKER+~COOK1# to #FOOD_PREP_2#",
 			""
 			
 	)),
@@ -233,6 +516,26 @@ public enum Symbol {
 			"Finally, use any remaining #FOOD_BASIC+~PREP1# to #FOOD_PREP_3# the dish",
 			"#FOOD_PREP_3+%CAP# with #SEASONING+~PREP3#, and #SERVE#",
 			"Use the #SEASONING+~PREP3# to #FOOD_PREP_3#, then #SERVE#",
+			"When the #FOOD_PRODUCT+~PROD1# begins to #FINISHING#, #FOOD_PREP_3# and #SERVE#",
+			"Assuming you're using a #COOKER+~COOK1#, watch the #FOOD_BASIC+~PREP1# until they start to #FINISHING#",
+			""
+			
+	)),
+	
+	FINISHING(new PhraseList(
+			"brown",
+			"caramelise",
+			"harden",
+			"soften",
+			"go green",
+			"set",
+			"wobble",
+			"spread",
+			w("emit noxious fumes", 0.25),
+			"crack",
+			"sing",
+			w("scream", 0.25),
+			"toast",
 			""
 			
 	)),
@@ -335,7 +638,7 @@ public enum Symbol {
 			"called for help after",
 			"requested police aid after",
 			"shot at passers-by before",
-			"insulted #TITLES_MALE# #NAMES_MALE_FIRST# before",
+			"insulted #TITLE_MALE# #NAMES_MALE_FIRST# before",
 			"were brutally murdered after",
 			"#ADV# incinerated a #NOUNS_BASIC#, before",
 			"messed about with #NOUNS_BASIC_PLURAL#, before",
@@ -508,7 +811,7 @@ public enum Symbol {
 	
 	SENT_I(new PhraseList(
 			"The #PEOPLE_PLURAL+~SUBJ1# ended up being #APPREHENDED#",
-			"#CONT_ADVERB_CAPS# the #PEOPLE_PLURAL+~SUBJ1# and friends #ESCAPED# to #WHERE+~DEST1#. #DESTOUT#",
+			"#CONT_ADVERB_CAPS# the #PEOPLE_PLURAL+~SUBJ1# and friends #ESCAPED# #WHERE+~DEST1#. #DESTOUT#",
 			"After being #VERB_PAST+~OUT1#, the #PEOPLE_PLURAL+~SUBJ1# and several onlookers #INVOLVED2# in #CRIME#",
 			"After being #VERB_PAST+~OUT1#, the #PEOPLE_PLURAL+~SUBJ1# and friends #ESCAPED# #PLACE_1+~P1+%CAP##PLACE_2+~P2#",
 			"Having been #VERB_PAST+~OUT1#, #PEOPLE_PLURAL+~SUBJ2# accused #PEOPLE_PLURAL+~SUBJ1# of #CRIME#"
@@ -613,7 +916,7 @@ public enum Symbol {
 	)),
 	
 	SENT_K(new PhraseList(
-			"#THINGS+~SUBJ1+%CAP# #INVOLVED#",
+			"#THINGS+%CAP# #INVOLVED#",
 			"#THE+%CAP# outcome of this has caused the #THINGS+~SUBJ1# to be sent to #WHERE# #SENT_L#",
 			"#THE+%CAP# resultant chain of events caused the #THINGS+~SUBJ1# to be sent to #WHERE# #SENT_L#",
 			"Worryingly, the #THINGS+~SUBJ1# and fellow perpetrators have not been recovered",
@@ -784,22 +1087,22 @@ public enum Symbol {
 			
 			//Recipe Books
 			
-			"#RECIPE_BOOKTYPE# #FOOD_BASIC+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP#",
-			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY+%CAP# #FOOD_BASIC+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP#",
-			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY+%CAP# #ANIMAL_SING+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP#",
-			"#RECIPE_BOOKTYPE# #FOOD_BASIC+~PREP1+%CAP# and #ANIMAL_SING+~PREP2+%CAP# #FOOD_PRODUCT+~PROD1+%CAP#"
+			"#RECIPE_BOOKTYPE# #FOOD_BASIC+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP@#",
+			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY+%CAP# #FOOD_BASIC+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP@#",
+			"#RECIPE_BOOKTYPE# #FOOD_PRIMARY+%CAP# #ANIMAL_SING+~PREP1+%CAP# #FOOD_PRODUCT+~PROD1+%CAP@#",
+			"#RECIPE_BOOKTYPE# #FOOD_BASIC+~PREP1+%CAP# and #ANIMAL_SING+~PREP2+%CAP# #FOOD_PRODUCT+~PROD1+%CAP@#",
 			
 			//Newspapers NEWS_TITLE_1 NEWS_TITLE_2 THE PLACE_1 PLACE_2
 			
-			/*"#THE+%CAP# #NEWS_TITLE_1+%CAP# #NEWS_TITLE_2+%CAP#",
+			"#THE+%CAP# #NEWS_TITLE_1+%CAP# #NEWS_TITLE_2+%CAP#",
 			"#THE+%CAP# #PLACE_1+%CAP##PLACE_2# #NEWS_TITLE_2+%CAP#",
 			"#THE+%CAP# #ANIMAL_SING+%CAP##PLACE_2# #NEWS_TITLE_2+%CAP#",
 			"#THE+%CAP# #PLACE_1+%CAP##PLACE_2# #ANIMAL_SING+%CAP#",
-			"#THE+%CAP# #PLACE_1+%CAP##PLACE_2# #NEWS_TITLE_2+%CAP#",
+			"#THE+%CAP# #PLACE_1+%CAP##PLACE_2# #NEWS_TITLE_2+%CAP#"
 			
 			//Hybrid
 			
-			"#THE+%CAP# #VERB_PRES+%CAP# at #PLACE_1+%CAP##PLACE_2#",
+			/*"#THE+%CAP# #VERB_PRES+%CAP# at #PLACE_1+%CAP##PLACE_2#",
 			"#THE+%CAP# #VERB_PRES+%CAP# at #ANIMAL_SING+%CAP##PLACE_2#",
 			"#THE+%CAP# #VERB_PRES+%CAP# at #NOUNS_BASIC+%CAP##PLACE_2#",
 			"#THE+%CAP# #VERB_PRES+%CAP#",
@@ -5134,9 +5437,7 @@ public enum Symbol {
 			"enthusiastically",
 			"equally",
 			"especially",
-			"even",
 			"evenly",
-			"eventually",
 			"exactly",
 			"excitedly",
 			"extremely",
@@ -5344,7 +5645,6 @@ public enum Symbol {
 			"valiantly",
 			"vastly",
 			"verbally",
-			"very",
 			"viciously",
 			"victoriously",
 			"violently",
@@ -5584,6 +5884,8 @@ public enum Symbol {
 	
 	)),
 	
+	
+	
 	RECIPE_BOOKTYPE(new PhraseList(
 			"How to Cook",
 			"Making",
@@ -5714,7 +6016,7 @@ public enum Symbol {
 			"Sentinel",
 			"Eagle",
 			"Republican",
-			"Independant",
+			"Independent",
 			"Observer",
 			"Guardian",
 			"Mail",

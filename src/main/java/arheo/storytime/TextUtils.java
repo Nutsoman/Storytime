@@ -8,7 +8,9 @@ import arheo.storytime.Story.Thing;
 
 public class TextUtils {
 	private static final Pattern pattern = Pattern.compile("#(.*?)#");
-	
+	//a
+	public static int storytype = 0;
+	//b
 	public static String stringtrans(String text, Story story) {
 		Matcher matcher = pattern.matcher(text);
 		int iter = 0;
@@ -22,6 +24,8 @@ public class TextUtils {
 			while (matcher.find()) {
 				int start = matcher.start()+1;
 				int end = matcher.end();
+				
+				
 				
 				String raw = text.substring(start,end-1);
 				String[] words = raw.split(Symbol.seperator);
@@ -59,6 +63,23 @@ public class TextUtils {
 					}
 				}
 				
+				//a
+				if (words.length > 1 && format) {
+					for (int i=1; i<words.length; i++) {
+						replacement = Formatting.format(replacement, words[i]);
+						if (words[i].contains("@")) {
+							storytype = 2;
+							String name = words[i].substring(1);
+							if (!story.things.containsKey(name)) {
+								story.things.put(name,new Thing(stringtrans(replacement.text,story)));
+							}
+							replacement = new Phrase(story.things.get(name).name);
+							Storytime.logger.info(story.things);
+		
+						}
+					}
+				}
+				//b
 				replaced.append(text.substring(lastend,start-1));
 				replaced.append(replacement.text);
 				lastend = end;
